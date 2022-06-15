@@ -1,0 +1,11 @@
+<h1>Toast!</h1>
+<p> 
+    <%= @time %> 
+</p>
+<ul>
+<% @articles.each do |article| %>
+    <li>
+    <%= article.title %>
+    </li>
+<% end %>
+</ul>
