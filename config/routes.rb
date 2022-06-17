@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'articles#index', as: "home"
   # get 'articles', to: 'articles#index'
   # get 'articles/new', to: 'articles#new'
   resources :articles
