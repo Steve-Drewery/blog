@@ -3,7 +3,32 @@
 <p>Importance: <%= @article.importance %></p>
 
 <p> Created <%= time_ago_in_words(@article.created_at)  %> ago </p>
-<p> Updated <%= time_ago_in_words(@article.updated_at)  %> ago </p>,lm ,n 
+<p> Updated <%= time_ago_in_words(@article.updated_at)  %> ago </p>
 
 <p><%= link_to "Edit this article", edit_article_path %></p>
 <p><%= link_to "Delete this article", article_path, method: :delete, data: { confirm: "Do you really want to delete this article?"} %></p>
+
+<h2>Comments</h2>
+<% @article.comments.each do |comment| %>
+    <p>Commenter: <%= comment.commenter %></p>
+    <p>Comment: <%= comment.body %></p>
+<% end %>
+
+
+<h2> Add a Comment</h2>
+
+<%= form_with model: [@article, @article.comments.build ] do |form| %>
+  <div>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+  </div>
+
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
